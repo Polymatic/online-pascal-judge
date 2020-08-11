@@ -1,0 +1,21 @@
+h1, h2, h3 {
+  text-align: center;
+}
+
+input, textarea, select, button {
+  width : 500px;
+  padding: 10;
+  margin: 10;
+  box-sizing: border-box;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  /*background-color: lightgreen;*/
+
+}
+
+textarea.stdout {
+  background-color: green;
+}
+
+
