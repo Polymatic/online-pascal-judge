@@ -10,7 +10,7 @@ def kill(processID):
     process.kill()
 
 
-def runCommandCMD(directory, timeout, command):
+def runCommandCMD(directory, timeout, command, sudoPass=None):
     # try:
     #     f = open(self.filePath)
     # except IOError as e:
@@ -18,11 +18,13 @@ def runCommandCMD(directory, timeout, command):
     #     return(False)
     # else:
     #     f.close()
-    process = Popen(command, shell=True,cwd=directory, stdout=PIPE, stderr=PIPE)
+    process = Popen(command, shell=True,cwd=directory, stdout=PIPE, stderr=PIPE, universal_newlines=True)
 
     try:
+        if not sudoPass:
+            sudo_prompt = p.communicate(sudoPass + '\n')[1]
         output = process.communicate(timeout=timeout)
-        print('function check', output)
+        print('function output check =', output)
     except TimeoutExpired:
         print('Entered the timeout condition')
         kill(process.pid)
